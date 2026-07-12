@@ -3,6 +3,9 @@ from .models import Aiquest
 from .serializers import AiquestSerializer
 from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import io
+from rest_framework.parsers import JSONParser
 
 # Create your views here.
 #Queryset
@@ -25,3 +28,21 @@ def aiquest_ins(request, pk):
     json_data= JSONRenderer().render(serializer.data)
     #Json sent to User
     return HttpResponse(json_data, content_type='application/json')
+
+@csrf_exempt
+def aiquest_create(request):
+    if request.method == 'POST':
+        json_data = request.body
+        #json to stream convert
+        stream = io.BytesIO(json_data)
+        #stream to python
+        pythondata = JSONParser().parse(stream)
+        #python to complex data
+        serializer = AiquestSerializer(data=pythondata)
+        if serializer.is_valid():
+            serializer.save()
+            res = {'msg':'Successfully insert data'}
+            json_data = JSONRenderer().render(res)
+            return HttpResponse(json_data, content_type='application/json')
+        json_data = JSONRenderer().render(serializer.errors)
+        return HttpResponse(json_data, content_type='application/json')
