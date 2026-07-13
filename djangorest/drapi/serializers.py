@@ -5,7 +5,7 @@ from .models import Aiquest
 class AiquestSerializer(serializers.Serializer):
     teacher_name = serializers.CharField(max_length=25)
     course = serializers.CharField(max_length=20)
-    course_description = serializers.CharField(max_length=100)
+    course_duration = serializers.IntegerField()
     seat = serializers.IntegerField()
 
     def create(self, validated_data):

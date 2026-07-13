@@ -5,5 +5,5 @@ from django.db import models
 class Aiquest(models.Model):
     teacher_name = models.CharField(max_length=25)
     course = models.CharField(max_length=20)
-    course_description = models.IntegerField()
+    course_duration = models.IntegerField()
     seat = models.IntegerField()
