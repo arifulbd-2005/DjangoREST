@@ -46,3 +46,20 @@ def aiquest_create(request):
             return HttpResponse(json_data, content_type='application/json')
         json_data = JSONRenderer().render(serializer.errors)
         return HttpResponse(json_data, content_type='application/json')
+    
+    if request.method == 'PUT':
+        json_data = request.body
+        #json to stream convert
+        stream = io.BytesIO(json_data)
+        #stream to python
+        pythondata = JSONParser().parse(stream)
+        id = pythondata.get('id')
+        aiq = Aiquest.objects.get(id=id)
+        serializer = AiquestSerializer(aiq, data=pythondata, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            res = {'msg':'Successfully Updated data'}
+            json_data = JSONRenderer().render(res)
+            return HttpResponse(json_data, content_type='application/json')
+        json_data = JSONRenderer().render(serializer.errors)
+        return HttpResponse(json_data, content_type='application/json')
