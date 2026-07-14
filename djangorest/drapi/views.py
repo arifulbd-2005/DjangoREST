@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def aiquest_create(request, pk=None):
     if request.method == 'GET':
         id = pk
@@ -24,6 +24,13 @@ def aiquest_create(request, pk=None):
         Serializer = AiquestSerializer(ai, many=True)
         return Response(Serializer.data)
 
+    if request.method == 'POST':
+        serializer = AiquestSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            res = {'msg':'Successfully insert data'}
+            return Response(res)
+        return Response(serializer.errors)
 
 
 
