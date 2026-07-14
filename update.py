@@ -3,9 +3,9 @@ import json
 URL = "http://127.0.0.1:8000/aicreate/"
 
 data = {
-    'id' : 1,
-    'teacher_name' : 'Afnan',
-    'course' : 'Data Science',
+    'id' : 3,
+    'teacher_name' : 'Lamin',
+    'course_duration' : 6,
 }
 
 json_data = json.dumps(data)

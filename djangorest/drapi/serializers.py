@@ -1,8 +1,14 @@
 from rest_framework import serializers
-
 from .models import Aiquest
 
-class AiquestSerializer(serializers.Serializer):
+# sort process serializer
+class AiquestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Aiquest
+        fields = ['teacher_name', 'course', 'course_duration', 'seat']
+
+# long process serializer
+"""class AiquestSerializer(serializers.Serializer):
     teacher_name = serializers.CharField(max_length=25)
     course = serializers.CharField(max_length=20)
     course_duration = serializers.IntegerField()
@@ -17,4 +23,4 @@ class AiquestSerializer(serializers.Serializer):
         instance.course_duration = validated_data.get('course_duration', instance.course_duration)
         instance.seat = validated_data.get('seat', instance.seat)
         instance.save()
-        return instance
+        return instance"""
