@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT', 'PATCH'])
 def aiquest_create(request, pk=None):
     if request.method == 'GET':
         id = pk
@@ -30,6 +30,27 @@ def aiquest_create(request, pk=None):
             serializer.save()
             res = {'msg':'Successfully insert data'}
             return Response(res)
+        return Response(serializer.errors)
+
+
+    if request.method == 'PUT':
+        id = pk
+        #complex data
+        ai = Aiquest.objects.get(id=id)
+        #python dictionary
+        serializer = AiquestSerializer(ai, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg':'Successfully Full data Updated'})
+        return Response(serializer.errors)
+    
+    if request.method == 'PATCH':
+        id = pk
+        ai = Aiquest.objects.get(id=id)
+        serializer = AiquestSerializer(ai, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg':'Successfully partial data Updated'})
         return Response(serializer.errors)
 
 
