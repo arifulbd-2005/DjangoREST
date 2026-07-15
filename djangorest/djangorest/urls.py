@@ -21,6 +21,8 @@ from drapi import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include("rest_framework.urls")),
-    path('aicreate/', views.aiquest_create, name='aicreate'),
-    path('aicreate/<int:pk>', views.aiquest_create, name='aicreate')
+#   path('aicreate/', views.aiquest_create, name='aicreate'),     2 line forfunctin based views
+#   path('aicreate/<int:pk>', views.aiquest_create, name='aicreate')
+    path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
+    path('aicreate/<int:pk>', views.AiquestCreate.as_view(), name='aicreate'),
 ]
