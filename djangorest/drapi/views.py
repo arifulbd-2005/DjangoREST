@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-@api_view(['GET', 'POST', 'PUT', 'PATCH'])
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def aiquest_create(request, pk=None):
     if request.method == 'GET':
         id = pk
@@ -52,6 +52,12 @@ def aiquest_create(request, pk=None):
             serializer.save()
             return Response({'msg':'Successfully partial data Updated'})
         return Response(serializer.errors)
+    
+    if request.method == 'DELETE':
+        id = pk
+        ai = Aiquest.objects.get(id=id)
+        ai.delete()
+        return Response({'msg':'Successfully Deleted data'})
 
 
 
