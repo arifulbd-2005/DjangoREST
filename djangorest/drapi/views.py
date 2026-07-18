@@ -1,4 +1,22 @@
-# Class based views....................
+#ListModelMixin.............................
+
+from .models import Aiquest
+from .serializers import AiquestSerializer
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import ListModelMixin
+
+# Create your views here.
+class AiquestList(GenericAPIView, ListModelMixin):
+    queryset = Aiquest.objects.all()
+    serializer_class = AiquestSerializer
+    
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+
+
+
+"""# Class based views....................
 
 from django.shortcuts import render
 import rest_framework
@@ -52,7 +70,7 @@ class AiquestCreate(APIView):
         id = pk
         ai = Aiquest.objects.get(id=id)
         ai.delete()
-        return Response({'msg':'Successfully Deleted data'})
+        return Response({'msg':'Successfully Deleted data'})"""
 
 
 # Function based views.................

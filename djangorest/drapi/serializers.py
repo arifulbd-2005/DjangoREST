@@ -5,7 +5,7 @@ from .models import Aiquest
 class AiquestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aiquest
-        fields = ['teacher_name', 'course', 'course_duration', 'seat']
+        fields = ['id', 'teacher_name', 'course', 'course_duration', 'seat']
 
 # long process serializer
 """class AiquestSerializer(serializers.Serializer):
