@@ -27,4 +27,6 @@ urlpatterns = [
     # path('aicreate/<int:pk>', views.AiquestCreate.as_view(), name='aicreate'),
     path('ailist/', views.AiquestList.as_view(), name='ailist'),
     path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
+    path('airetreive/<int:pk>/', views.AiquestRetrieve.as_view()),
+
 ]
