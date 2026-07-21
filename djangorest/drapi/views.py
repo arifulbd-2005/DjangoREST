@@ -27,6 +27,14 @@ class AiquestRetrieve(GenericAPIView, RetrieveModelMixin):
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
 
+class AiquestUpdate(GenericAPIView, UpdateModelMixin):
+    queryset = Aiquest.objects.all()
+    serializer_class = AiquestSerializer
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+
 
 """# Class based views....................
 

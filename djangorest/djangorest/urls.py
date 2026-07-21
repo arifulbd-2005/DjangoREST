@@ -28,5 +28,6 @@ urlpatterns = [
     path('ailist/', views.AiquestList.as_view(), name='ailist'),
     path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
     path('airetreive/<int:pk>/', views.AiquestRetrieve.as_view()),
+    path('aiupdate/<int:pk>/', views.AiquestUpdate.as_view()),
 
 ]
