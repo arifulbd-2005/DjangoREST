@@ -25,10 +25,12 @@ urlpatterns = [
     # path('aicreate/<int:pk>', views.aiquest_create, name='aicreate')
     # path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
     # path('aicreate/<int:pk>', views.AiquestCreate.as_view(), name='aicreate'),
-    path('ailist/', views.AiquestList.as_view(), name='ailist'),
-    path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
-    path('airetreive/<int:pk>/', views.AiquestRetrieve.as_view()),
-    path('aiupdate/<int:pk>/', views.AiquestUpdate.as_view()),
-    path('aidestroy/<int:pk>/', views.AiquestDestroy.as_view()),    
+    # path('ailist/', views.AiquestList.as_view(), name='ailist'),
+    # path('aicreate/', views.AiquestCreate.as_view(), name='aicreate'),
+    # path('airetreive/<int:pk>/', views.AiquestRetrieve.as_view()),
+    # path('aiupdate/<int:pk>/', views.AiquestUpdate.as_view()),
+    # path('aidestroy/<int:pk>/', views.AiquestDestroy.as_view()),  
+    path('ailistcreate/', views.Aiquest_List_Create.as_view(), name='aicreate'),
+    path('retrieve-update-destroy/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
 
 ]
