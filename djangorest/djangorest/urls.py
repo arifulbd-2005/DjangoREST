@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from drapi import views
+from rest_framework.routers import DefaultRouter # just Model view for import//
+
+#Create router object 
+router = DefaultRouter()
+
+#router register
+router.register('aiquest', views.Aiquest_Model_View_Set, basename='teacher')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +39,8 @@ urlpatterns = [
     # path('aidestroy/<int:pk>/', views.AiquestDestroy.as_view()),  
     # path('ailistcreate/', views.Aiquest_List_Create.as_view(), name='aicreate'),
     # path('retrieve-update-destroy/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
-    path('aiquest/', views.Aiquest_List_Create.as_view(), name='ailist'),
-    path('aiquest/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
+    # path('aiquest/', views.Aiquest_List_Create.as_view(), name='ailist'),
+    # path('aiquest/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
+    path('', include(router.urls))
 
 ]

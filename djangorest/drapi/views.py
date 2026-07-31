@@ -1,3 +1,16 @@
+
+from .models import Aiquest
+from .serializers import AiquestSerializer
+from rest_framework import viewsets
+
+# Create your views here.
+class Aiquest_Model_View_Set(viewsets.ModelViewSet):
+    # List, Create, Delete, Update, Partial update
+    queryset = Aiquest.objects.all()
+    serializer_class = AiquestSerializer
+
+
+"""#CRUD Operation .................
 from .models import Aiquest
 from .serializers import AiquestSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
@@ -9,10 +22,10 @@ class Aiquest_List_Create(ListCreateAPIView):
 
 class Aiquest_Retrieve_Update_Destroy(RetrieveUpdateDestroyAPIView):
     queryset = Aiquest.objects.all()
-    serializer_class = AiquestSerializer
+    serializer_class = AiquestSerializer"""
 
     
-"""# sortcut ModelMixin................................
+"""# CRUD Operation with GeneircAPIView and ModelMixin ................................
 from .models import Aiquest
 from .serializers import AiquestSerializer
 from rest_framework.generics import GenericAPIView
