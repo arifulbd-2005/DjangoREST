@@ -30,7 +30,9 @@ urlpatterns = [
     # path('airetreive/<int:pk>/', views.AiquestRetrieve.as_view()),
     # path('aiupdate/<int:pk>/', views.AiquestUpdate.as_view()),
     # path('aidestroy/<int:pk>/', views.AiquestDestroy.as_view()),  
-    path('ailistcreate/', views.Aiquest_List_Create.as_view(), name='aicreate'),
-    path('retrieve-update-destroy/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
+    # path('ailistcreate/', views.Aiquest_List_Create.as_view(), name='aicreate'),
+    # path('retrieve-update-destroy/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
+    path('aiquest/', views.Aiquest_List_Create.as_view(), name='ailist'),
+    path('aiquest/<int:pk>/', views.Aiquest_Retrieve_Update_Destroy.as_view()),
 
 ]

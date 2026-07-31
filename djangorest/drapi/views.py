@@ -1,4 +1,18 @@
-# sortcut ModelMixin................................
+from .models import Aiquest
+from .serializers import AiquestSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+# Create your views here.
+class Aiquest_List_Create(ListCreateAPIView):
+    queryset = Aiquest.objects.all()
+    serializer_class = AiquestSerializer
+
+class Aiquest_Retrieve_Update_Destroy(RetrieveUpdateDestroyAPIView):
+    queryset = Aiquest.objects.all()
+    serializer_class = AiquestSerializer
+
+    
+"""# sortcut ModelMixin................................
 from .models import Aiquest
 from .serializers import AiquestSerializer
 from rest_framework.generics import GenericAPIView
@@ -26,7 +40,7 @@ class Aiquest_Retrieve_Update_Destroy(GenericAPIView, RetrieveModelMixin, Update
         return self.update(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
+        return self.destroy(request, *args, **kwargs)"""
 
     
 """#ListModelMixin.................................
