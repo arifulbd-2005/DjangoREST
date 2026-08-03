@@ -1,13 +1,15 @@
-
+# Create Model View Set................
 from .models import Aiquest
 from .serializers import AiquestSerializer
 from rest_framework import viewsets
+from rest_framework.permissions import IsAdminUser
 
 # Create your views here.
 class Aiquest_Model_View_Set(viewsets.ModelViewSet):
     # List, Create, Delete, Update, Partial update
     queryset = Aiquest.objects.all()
     serializer_class = AiquestSerializer
+    permission_classes = [IsAdminUser]
 
 
 """#CRUD Operation .................
